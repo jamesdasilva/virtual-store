@@ -1,11 +1,8 @@
 import React from 'react'
-import logo from './images/logo.svg'
+import ProductListPageLayout from './ProductListPageLayout/ProductListPageLayout'
 
 const App = () => (
-  <>
-    <img className="logo" src={logo} width={150} height={150} data-testid="logo" />
-    <marquee data-testid="marquee">Leroy Merlin Brasil - Front-end Test</marquee>
-  </>
+  <ProductListPageLayout />
 )
 
 export default App

@@ -1,0 +1,20 @@
+.prod-list-page {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #f00;
+}
+.prod-list-page__header {
+  display: flex;
+  flex-grow: 0;
+  box-sizing: border-box;
+  min-height: 100px;
+  background-color: #777;
+}
+.prod-list-page__body {
+  display: flex;
+  flex-grow: 2;
+  box-sizing: border-box;
+  background-color: #444;
+}

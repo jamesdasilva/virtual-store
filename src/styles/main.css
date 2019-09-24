@@ -1,8 +1,4 @@
-#root {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  width: 100%;
-  color: #72bf44;
-  background: #fff;
+body {
+  margin: 0;
+  padding: 0
 }

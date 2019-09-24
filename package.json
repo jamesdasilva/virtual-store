@@ -8,6 +8,10 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
     "@testing-library/jest-dom": "^4.0.1",
     "@testing-library/react": "^9.1.3",
     "babel-eslint": "^10.0.2",
@@ -46,7 +50,9 @@
     "test": "jest --config=jest.config.js --coverage --watchAll",
     "test:ci": "jest --config=jest.config.js --coverage",
     "stylelint:ci": "stylelint 'src/**/*.css/'",
-    "eslint:ci": "eslint -c .eslintrc 'src/**/*.js'"
+    "eslint:ci": "eslint -c .eslintrc 'src/**/*.js'",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook --watch"
   },
   "dependencies": {
     "react": "^16.9.0",
