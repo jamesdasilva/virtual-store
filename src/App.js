@@ -1,8 +1,8 @@
 import React from 'react'
-import ProductListPageLayout from './ProductListPageLayout/ProductListPageLayout'
+import PageLayout from './components/PageLayout/PageLayout'
 
 const App = () => (
-  <ProductListPageLayout />
+  <PageLayout />
 )
 
 export default App
