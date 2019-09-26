@@ -23,6 +23,12 @@ const ProductCatalog = () => {
       <div className='prod-catalog__item'>
         <CatalogProduct />
       </div>
+      <div className='prod-catalog__item'>
+        <CatalogProduct />
+      </div>
+      <div className='prod-catalog__item'>
+        <CatalogProduct />
+      </div>
     </div>
   )
 }

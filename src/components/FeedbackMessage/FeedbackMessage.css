@@ -1,0 +1,27 @@
+.fdback-msg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 30px;
+  display: flex;
+  align-items: stretch;
+  padding: 0 30px;
+  background-color: #158110;
+  color: #fff
+}
+.fdback-msg__content {
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.fdback-msg__text {
+  font-size: 12px;
+  line-height: 30px
+}
+.fdback-msg__close-icon {
+  font-size: 16px;
+  line-height: 30px
+}
