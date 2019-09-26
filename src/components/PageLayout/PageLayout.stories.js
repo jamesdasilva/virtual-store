@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductListPageLayout from './ProductListPageLayout'
+import ProductListPageLayout from './PageLayout'
 
 export default {
   title: 'ProductListPageLayout'

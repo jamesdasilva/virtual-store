@@ -6,14 +6,16 @@
 }
 .page-layout__header {
   display: flex;
+  justify-content: center;
   flex-grow: 0;
   box-sizing: border-box;
   height: 60px;
-  background-color: #777;
 }
 .page-layout__body {
+  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-grow: 2;
-  box-sizing: border-box;
+  justify-content: center;
+  padding: 40px 0 10px;
 }
