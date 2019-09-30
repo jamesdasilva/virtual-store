@@ -19,3 +19,13 @@
   justify-content: center;
   padding: 40px 0 10px;
 }
+@media screen and (max-width: 320px) {
+  .page-layout__header {
+    background-color: #78BE20
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 440px) {
+  .page-layout__header {
+    background-color: #78BE20
+  }
+}

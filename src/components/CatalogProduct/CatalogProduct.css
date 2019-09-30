@@ -1,5 +1,6 @@
 .cat-product {
   box-sizing: border-box;
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -13,8 +14,7 @@
 }
 .cat-product__thumb-content img {
   box-sizing: border-box;
-  width: 200px;
-  height: 200px
+  width: 100%;
 }
 .cat-product__tag {
   box-sizing: border-box;
@@ -98,4 +98,19 @@
   flex-shrink: 0;
   font-size: 11px;
   color: #666;
+}
+@media screen and (min-width: 321px) and (max-width: 440px) {
+  .cat-product__to-price-value {
+    font-size: 17px;
+  }
+  .cat-product__installments-content {
+    flex-direction: column;
+  }
+  .cat-product__from-price {
+    width: 100%;
+    margin: 2px 0;
+  }
+  .cat-product__installments {
+    width: 100%;
+  }
 }
