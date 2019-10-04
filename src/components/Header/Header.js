@@ -1,8 +1,7 @@
 import React from 'react'
 import './Header.css'
 import logo from '../../images/logo.svg'
-import blackCart from '../../images/cart.svg'
-import whiteCart from '../../images/cart-white.svg'
+import CartIcon from '../CartIcon/CartIcon'
 
 const Header = () => {
   return (
@@ -15,11 +14,7 @@ const Header = () => {
           <span>Os melhores produtos</span>
         </div>
         <div className="header__cart-icon">
-          <div className='cart-icon'>
-            <div className='cart-icon__count'>0</div>
-            <img className='cart-icon__black-cart' src={blackCart} width={34} height={34} />
-            <img className='cart-icon__white-cart' src={whiteCart} width={34} height={34} />
-          </div>
+          <CartIcon />
         </div>
       </div>
     </div>
