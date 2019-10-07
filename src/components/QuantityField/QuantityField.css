@@ -1,0 +1,57 @@
+.quantity-field {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+}
+.quantity-field__btn-decrement {
+  box-sizing: content-box;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 7px 0 7px 7px;
+}
+.quantity-field__btn-decrement div{
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  margin: 0;
+  margin-top: -1px;
+  padding: 0;
+  border: 1px solid #78BE20;
+  color: #78BE20;
+  font-size: 16px;
+  line-height: 16px;
+}
+.quantity-field__btn-increment {
+  box-sizing: content-box;
+  background-color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 7px 7px 7px 0;
+}
+.quantity-field__btn-increment div{
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  margin: 0;
+  margin-top: -1px;
+  padding: 0;
+  border: 1px solid #78BE20;
+  color: #78BE20;
+  font-size: 16px;
+  line-height: 16px;
+}
+.quantity-field__value {
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 10px;
+  border: 0;
+  text-align: center;
+}

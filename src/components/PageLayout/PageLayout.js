@@ -12,7 +12,7 @@ const PageLayout = () => {
       <div className='page-layout__body'>
         <ProductCatalog />
         <FeedbackMessage />
-        <Cart /> 
+        <Cart />
       </div>
     </div>
   )
