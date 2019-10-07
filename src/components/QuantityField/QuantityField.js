@@ -6,7 +6,7 @@ class QuantityField extends React.Component {
     return (
       <div className='quantity-field'>
         <button className='quantity-field__btn-decrement'><div>-</div></button>
-        <input className='quantity-field__value' type='text' value='1' />
+        <input className='quantity-field__value' type='text' />
         <button className='quantity-field__btn-increment'><div>+</div></button>
       </div>
     )
