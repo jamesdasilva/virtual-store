@@ -1,32 +1,53 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './CatalogProduct.css'
 
-const CatalogProduct = () => {
+const CatalogProduct = (props) => {
+  const { dataProduct } = props
   return (
     <div className='cat-product'>
       <div className='cat-product__thumb-content'>
-        <img src='https://cdn.leroymerlin.com.br/products/furadeira_parafusadeira_de_impacto_3_8_a_bateria_de_12_volts_1566684694_4ea1_300x300.jpg' />
-        <div className='cat-product__tag'>Exclusivo on-line</div>
-        <div className='cat-product__offer'>
-          <div className='cat-product__offer-title'>Oferta</div>
-          <div className='cat-product__offer-value'>30%</div>
-        </div>
+        <img src={dataProduct.picture} />
+        {dataProduct.tag &&
+          (<div className='cat-product__tag'>
+            {dataProduct.tag.label}
+          </div>)}
+        {dataProduct.offer &&
+          (<div className='cat-product__offer'>
+            <div className='cat-product__offer-title'>
+              {dataProduct.offer.label}
+            </div>
+            <div className='cat-product__offer-value'>
+              {dataProduct.offer.value}%
+            </div>
+          </div>)}
       </div>
-      <div className='cat-product__name'>Furadeira de Impacto 1/2&quot 650W PC650ID 127V (110V) Dexter IV</div>
+      <div className='cat-product__name'>{dataProduct.name}</div>
       <div className='cat-product__price'>
         <div className='cat-product__to-price'>
-          <span className='cat-product__to-price-value'>R$ 469,00</span>
-          <span className='cat-product__to-price-unit'>cada</span>
+          {dataProduct.price.to &&
+            (<span className='cat-product__to-price-value'>
+              {`R$ ${dataProduct.price.to.integers},${dataProduct.price.to.decimals}`}
+            </span>)}
+          <span className='cat-product__to-price-unit'>{dataProduct.unit}</span>
         </div>
         <div className='cat-product__installments-content'>
-          <div className='cat-product__from-price'>R$ 569,00 cada</div>
-          <div className='cat-product__installments'>
-            <strong>10X</strong> de <strong>R$ 56,90</strong> s/juros
-          </div>
+          {dataProduct.price.from &&
+            (<div className='cat-product__from-price'>
+              {`R$ ${dataProduct.price.from.integers},${dataProduct.price.from.decimals} ${dataProduct.unit}`}
+            </div>)}
+          {dataProduct.installments &&
+            (<div className='cat-product__installments'>
+              <strong>{dataProduct.installments.amount}X</strong> de <strong>R$ {dataProduct.installments.amount}</strong> s/juros
+            </div>)}
         </div>
       </div>
     </div>
   )
+}
+
+CatalogProduct.propTypes = {
+  dataProduct: PropTypes.object
 }
 
 export default CatalogProduct

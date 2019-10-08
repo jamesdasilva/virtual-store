@@ -9,45 +9,34 @@ import './ProductCatalog.css'
 import { getProducts } from '../../module/products-module'
 
 class ProductCatalog extends Component {
-  console.log('teste', props)
-  props.getProducts()
-  return (
-    <div className='prod-catalog'>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
+  componentDidMount () {
+    this.props.getProducts()
+  }
+
+  render () {
+    return (
+      <div className='prod-catalog'>
+        {
+          this.props.productList &&
+          this.props.productList.map(product => (
+            <div className='prod-catalog__item' key={product.id}>
+              <CatalogProduct dataProduct={product} />
+            </div>
+          ))
+        }
       </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-      <div className='prod-catalog__item'>
-        <CatalogProduct />
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 ProductCatalog.propTypes = {
-  getProducts: PropTypes.func
+  getProducts: PropTypes.func,
+  productList: PropTypes.array
 }
 
 function mapStateToProps (state) {
   return {
-    products: state.products
+    productList: state.productList
   }
 }
 function mapDispatchToProps (dispatch) {

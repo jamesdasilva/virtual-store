@@ -9,7 +9,7 @@ import App from './App'
 import Products from './module/products-module'
 
 const reducers = combineReducers({
-  products: Products
+  productList: Products
 })
 
 ReactDOM.render(

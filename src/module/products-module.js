@@ -6,14 +6,12 @@ const RELOAD_PRODUCTS = 'leroy-merlin/products/RELOAD_PRODUCTS'
 // const INCREMENT_PRODUCT_QUANTITY = 'leroy-merlin/products/INCREMENT_PRODUCT_QUANTITY'
 // const DECREMENT_PRODUCT_QUANTITY = 'leroy-merlin/products/DECREMENT_PRODUCT_QUANTITY'
 
-const initialState = {
-  products: []
-}
+const initialState = []
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case RELOAD_PRODUCTS:
-      return { ...state, products: action.products }
+      return action.payload
     default:
       return state
   }
@@ -22,7 +20,7 @@ export default function (state = initialState, action) {
 export const reloadProducts = (products) => {
   return {
     type: RELOAD_PRODUCTS,
-    products
+    payload: products
   }
 }
 
@@ -36,7 +34,6 @@ export const getProducts = () => {
         'Content-Type': 'application/json'
       }
     }).then((response) => {
-      console.log('deu acerto!', response)
       dispatch(reloadProducts(response.data))
     }).catch(() => {
       console.log('deu erro!')
