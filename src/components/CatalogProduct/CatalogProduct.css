@@ -11,6 +11,8 @@
 .cat-product__thumb-content {
   box-sizing: border-box;
   position: relative;
+  width: 198px;
+  height: 198px;
 }
 .cat-product__thumb-content img {
   box-sizing: border-box;
@@ -44,12 +46,25 @@
 }
 .cat-product__name {
   box-sizing: border-box;
+  height: 72px;
+  overflow: hidden;
   padding: 6px;
   font-size: 13px;
   line-height: 15px;
   color: #444;
 }
 .cat-product__price {
+  box-sizing: border-box;
+  padding: 12px 6px;
+  border-bottom: 5px solid #78BE20; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  flex-grow: 1;
+  background-color: #fff;
+  
+}
+.cat-product__price--with-offer {
   box-sizing: border-box;
   padding: 12px 6px;
   display: flex;
@@ -60,6 +75,15 @@
 }
 .cat-product__to-price-value {
   box-sizing: border-box;
+  margin-right: 6px;
+  font-size: 22px;
+  text-align: 24px;
+  font-weight: bold;
+  color: #000
+}
+.cat-product__to-price-value--with-offer {
+  box-sizing: border-box;
+  margin-right: 6px;
   font-size: 22px;
   text-align: 24px;
   font-weight: bold;
@@ -69,7 +93,16 @@
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
-  margin-left: 6px;
+  font-size: 14px;
+  text-align: 20px;
+  font-weight: bold;
+  color: #000;
+  padding-bottom: 3px
+}
+.cat-product__to-price-unit--with-offer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
   font-size: 14px;
   text-align: 20px;
   font-weight: bold;
@@ -100,6 +133,13 @@
   color: #666;
 }
 @media screen and (min-width: 321px) and (max-width: 440px) {
+  .cat-product__thumb-content{
+    width: 138px;
+    height: 138px;
+  }
+  .cat-product__to-price {
+    flex-direction: column;
+  }
   .cat-product__to-price-value {
     font-size: 17px;
   }

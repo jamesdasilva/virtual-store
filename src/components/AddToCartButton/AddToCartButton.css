@@ -1,0 +1,11 @@
+.add-to-cart-button {
+  box-sizing: border-box;
+  height: 35px;
+  border-radius: 17.5px;
+  margin: 5px 10px 10px;
+  padding: 0;
+  border: 0;
+  color: #fff;
+  background-color: #78BE20;
+  cursor: pointer;
+}
