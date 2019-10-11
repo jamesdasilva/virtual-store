@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './CatalogProduct.css'
-import AddToCartButton from '../AddToCartButton/AddToCartButton'
 
 const CatalogProduct = (props) => {
-  const { dataProduct } = props
+  const { dataProduct, actionButtonRender } = props
   return (
     <div className='cat-product'>
       <div className='cat-product__thumb-content'>
@@ -24,7 +23,7 @@ const CatalogProduct = (props) => {
           </div>)}
       </div>
       <div className='cat-product__name'>{dataProduct.name}</div>
-      <AddToCartButton />
+      {actionButtonRender()}
       <div className={`cat-product__price${dataProduct.offer ? '--with-offer' : ''}`}>
         <div className='cat-product__to-price'>
           {dataProduct.price.to &&
@@ -49,7 +48,8 @@ const CatalogProduct = (props) => {
 }
 
 CatalogProduct.propTypes = {
-  dataProduct: PropTypes.object
+  dataProduct: PropTypes.object,
+  actionButtonRender: PropTypes.func
 }
 
 export default CatalogProduct
