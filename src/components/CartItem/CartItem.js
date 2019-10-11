@@ -1,30 +1,38 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import './CartItem.css'
+
 import QuantityField from '../QuantityField/QuantityField'
 
 class CartItem extends React.Component {
   render () {
+    const { item } = this.props
     return (
       <div className='cart-item'>
         <div className='cart-item__thumb'>
-          <img src='https://cdn.leroymerlin.com.br/products/furadeira_parafusadeira_de_impacto_3_8_a_bateria_de_12_volts_1566684694_4ea1_300x300.jpg' />
+          <img src={item.picture} />
         </div>
         <div className='cart-item__info'>
-          <h3 className='cart-item__name'>Fogão Brastemp 4 bocas embutir cor Inox com dupla chama e grill 110V</h3>
+          <h3 className='cart-item__name'>{item.name}</h3>
           <div className='cart-item__content'>
             <div className='cart-item__info-left'>
-              <div className='cart-item__code'>Cod. 9999999</div>
-              <QuantityField />
+              <div className='cart-item__code'>Cod. {item.id}</div>
+              <QuantityField value={item.amount} />
             </div>
             <div className='cart-item__info-right'>
-              <div className='cart-item__from-price'>1 un. 999,00</div>
-              <div className='cart-item__to-price'>1 un. 777,00</div>
+              <div className='cart-item__from-price'>{item.price.from ? `${item.price.from.integers},${item.price.from.decimals}` : '--'}</div>
+              <div className='cart-item__to-price'>{`${item.price.to.integers},${item.price.to.decimals}`}</div>
             </div>
           </div>
         </div>
       </div>
     )
   }
+}
+
+CartItem.propTypes = {
+  item: PropTypes.object
 }
 
 export default CartItem

@@ -1,13 +1,29 @@
 .cart {
   position: fixed;
   z-index: 10;
-  top: 0;
-  right: 0;
+  top: 60px;
+  right: -320px;
   bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 320px;
+  overflow: hidden;
+  transition: right 1s;
+  background-color: #fff;
+}
+.cart--show {
+  position: fixed;
+  z-index: 10;
+  top: 60px;
+  right: 0px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 320px;
+  overflow: hidden;
+  transition: right 1s;
   background-color: #fff;
 }
 .cart__title {
@@ -28,6 +44,7 @@
   margin-right: 4px;
   font-size: 40px;
   color: #78BE20;
+  cursor: pointer;
 }
 .cart__freight-calc {
   display:flex;
@@ -53,6 +70,7 @@
   flex-grow: 1;
   flex-shrink: 1;
   padding: 10px;
+  overflow: scroll;
   background-color: #fff;
 }
 .cart__freight-display {
