@@ -39,7 +39,7 @@ const incrementAmount = (id, state) => {
 
 const decreaseAmount = (id, state) => {
   const index = state.items.findIndex(item => item.product.id === id)
-  if (index >= 0) {
+  if (index >= 0 && state.items[index].amount > 0) {
     state.items[index].amount = state.items[index].amount - 1
   }
   return [...state.items]
