@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const INSERT_PRODUCT_IN_CART = 'leroy-merlin/cart/INSERT_PRODUCT_IN_CART'
 const DELETE_PRODUCT_CART = 'leroy-merlin/cart/DELETE_PRODUCT_CART'
 const SHOW_CART = 'leroy-merlin/cart/SHOW_CART'
@@ -6,10 +8,16 @@ const TOGGLE_CART = 'leroy-merlin/cart/TOGGLE_CART'
 const CHANGE_AMOUNT = 'leroy-merlin/cart/CHANGE_AMOUNT'
 const INCREMENT_AMOUNT = 'leroy-merlin/cart/INCREMENT_AMOUNT'
 const DECREASE_AMOUNT = 'leroy-merlin/cart/DECREASE_AMOUNT'
+const SET_FREIGHT = 'leroy-merlin/cart/SET_FREIGHT'
+const SET_CEP = 'leroy-merlin/cart/SET_CEP'
 
 const initialState = {
   items: [],
-  displayCart: false
+  displayCart: false,
+  freight: {
+    cep: undefined,
+    value: undefined
+  }
 }
 
 const addNewItem = (product, state) => {
@@ -45,6 +53,14 @@ const decreaseAmount = (id, state) => {
   return [...state.items]
 }
 
+const deleteProduct = (id, state) => {
+  const index = state.items.findIndex(item => item.product.id === id)
+  if (index >= 0) {
+    state.items.splice(index, 1)
+  }
+  return [...state.items]
+}
+
 export default function (state = initialState, action) {
   const product = action.payload
   switch (action.type) {
@@ -71,7 +87,7 @@ export default function (state = initialState, action) {
     case DELETE_PRODUCT_CART:
       return {
         ...state,
-        items: [...state.items]
+        items: deleteProduct(action.payload.id, state)
       }
     case SHOW_CART:
       return {
@@ -87,6 +103,22 @@ export default function (state = initialState, action) {
       return {
         ...state,
         displayCart: !state.displayCart
+      }
+    case SET_CEP:
+      return {
+        ...state,
+        freight: {
+          ...state.freight,
+          cep: action.payload.cep
+        }
+      }
+    case SET_FREIGHT:
+      return {
+        ...state,
+        freight: {
+          cep: action.payload.cep,
+          value: action.payload.freight
+        }
       }
     default:
       return state
@@ -128,6 +160,15 @@ export const decreaseAmountOfItem = (id) => {
   }
 }
 
+export const deleteProductOfCart = (id) => {
+  return {
+    type: DELETE_PRODUCT_CART,
+    payload: {
+      id
+    }
+  }
+}
+
 export const showCart = () => {
   return {
     type: SHOW_CART
@@ -143,5 +184,41 @@ export const hiddenCart = () => {
 export const toggleCart = () => {
   return {
     type: TOGGLE_CART
+  }
+}
+
+export const setCep = (cep) => {
+  return {
+    type: SET_CEP,
+    payload: {
+      cep
+    }
+  }
+}
+
+export const setFreight = (cep, freight) => {
+  return {
+    type: SET_FREIGHT,
+    payload: {
+      cep,
+      freight
+    }
+  }
+}
+
+export const getFreight = (cep) => {
+  return (dispatch) => {
+    const url = `https://us-central1-boitata-233919.cloudfunctions.net/api/freight/${cep}`
+    axios({
+      method: 'get',
+      url: url,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      dispatch(setFreight(cep, response.data.freight))
+    }).catch(() => {
+      console.log('deu erro!')
+    })
   }
 }

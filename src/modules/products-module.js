@@ -1,10 +1,6 @@
 import axios from 'axios'
 
 const RELOAD_PRODUCTS = 'leroy-merlin/products/RELOAD_PRODUCTS'
-// const INSERT_PRODUCT_IN_CART = 'leroy-merlin/products/INSERT_PRODUCT_IN_CART'
-// const DELETE_PRODUCT_CART = 'leroy-merlin/products/DELETE_PRODUCT_CART'
-// const INCREMENT_PRODUCT_QUANTITY = 'leroy-merlin/products/INCREMENT_PRODUCT_QUANTITY'
-// const DECREMENT_PRODUCT_QUANTITY = 'leroy-merlin/products/DECREMENT_PRODUCT_QUANTITY'
 
 const initialState = []
 

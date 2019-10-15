@@ -12,7 +12,10 @@ import {
   toggleCart,
   changeAmountOfItem,
   incrementAmountOfItem,
-  decreaseAmountOfItem
+  decreaseAmountOfItem,
+  deleteProductOfCart,
+  getFreight,
+  setCep
 } from '../../modules/cart-module'
 
 class Cart extends React.Component {
@@ -24,6 +27,7 @@ class Cart extends React.Component {
     this.decreaseAmount = this.decreaseAmount.bind(this)
     this.calculateSubtotal = this.calculateSubtotal.bind(this)
     this.extractProductList = this.extractProductList.bind(this)
+    this.onChangeCep = this.onChangeCep.bind(this)
   }
 
   changeAmount (id) {
@@ -67,6 +71,21 @@ class Cart extends React.Component {
     return items
   }
 
+  deleteItem (id) {
+    return () => {
+      this.props.deleteProductOfCart(id)
+    }
+  }
+
+  onChangeCep (e) {
+    this.props.setCep(e.target.value)
+    if (e.target.value.length >= 8) {
+      setTimeout(() => {
+        this.props.getFreight(this.props.cart.freight.cep)
+      }, 1000)
+    }
+  }
+
   render () {
     const { toggleCart, cart } = this.props
     const cartItems = this.extractProductList()
@@ -78,7 +97,10 @@ class Cart extends React.Component {
           <h3>Meus Produtos</h3>
         </div>
         <div className='cart__freight-calc'>
-          <input type='text' placeholder='Calcular CEP' />
+          <input type='text'
+            placeholder='Calcular CEP'
+            value={cart.freight.cep}
+            onChange={this.onChangeCep} />
         </div>
         <div className='cart__content'>
           {
@@ -89,13 +111,14 @@ class Cart extends React.Component {
                 item={item}
                 incrementAmount={this.incrementAmount}
                 decreaseAmount={this.decreaseAmount}
-                render={this.renderQuantityField} />
+                render={this.renderQuantityField}
+                deleteItem={this.deleteItem(item.product.id)} />
             ))
           }
         </div>
         <div className='cart__freight-display'>
           <span>Frete:</span>
-          <span>R$ 999,00</span>
+          <span>{ cart.freight.value || '--'}</span>
         </div>
         <div className='cart__subtotal'>
           <span>Subtotal:</span>
@@ -116,6 +139,9 @@ Cart.propTypes = {
   changeAmountOfItem: PropTypes.func,
   incrementAmountOfItem: PropTypes.func,
   decreaseAmountOfItem: PropTypes.func,
+  deleteProductOfCart: PropTypes.func,
+  getFreight: PropTypes.func,
+  setCep: PropTypes.func,
   cart: PropTypes.object
 }
 
@@ -130,7 +156,10 @@ function mapDispatchToProps (dispatch) {
     toggleCart,
     changeAmountOfItem,
     incrementAmountOfItem,
-    decreaseAmountOfItem
+    decreaseAmountOfItem,
+    deleteProductOfCart,
+    getFreight,
+    setCep
   }, dispatch)
 }
 

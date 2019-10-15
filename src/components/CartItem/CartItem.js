@@ -5,10 +5,11 @@ import './CartItem.css'
 
 class CartItem extends React.Component {
   render () {
-    const { item, render } = this.props
+    const { item, render, deleteItem } = this.props
     return (
       <div className='cart-item'>
         <div className='cart-item__thumb'>
+          <div className='cart-item__close' onClick={deleteItem}><div>+</div></div>
           <img src={item.product.picture} />
         </div>
         <div className='cart-item__info'>
@@ -37,7 +38,8 @@ CartItem.propTypes = {
   item: PropTypes.object,
   incrementAmount: PropTypes.func,
   decreaseAmount: PropTypes.func,
-  render: PropTypes.func
+  render: PropTypes.func,
+  deleteItem: PropTypes.func
 }
 
 export default CartItem
