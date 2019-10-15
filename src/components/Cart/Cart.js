@@ -6,20 +6,57 @@ import { connect } from 'react-redux'
 import './Cart.css'
 
 import CartItem from '../CartItem/CartItem'
+import QuantityField from '../QuantityField/QuantityField'
 
-import { toggleCart } from '../../modules/cart-module'
+import {
+  toggleCart,
+  changeAmountOfItem,
+  incrementAmountOfItem,
+  decreaseAmountOfItem
+} from '../../modules/cart-module'
 
 class Cart extends React.Component {
   constructor (props) {
     super(props)
+    this.changeAmount = this.changeAmount.bind(this)
+    this.renderQuantityField = this.renderQuantityField.bind(this)
+    this.incrementAmount = this.incrementAmount.bind(this)
+    this.decreaseAmount = this.decreaseAmount.bind(this)
     this.calculateSubtotal = this.calculateSubtotal.bind(this)
     this.extractProductList = this.extractProductList.bind(this)
+  }
+
+  changeAmount (id) {
+    return (e) => {
+      this.props.changeAmountOfItem(e.target.value, id)
+    }
+  }
+
+  renderQuantityField (value, id) {
+    return (
+      <QuantityField
+        value={value}
+        onChange={this.changeAmount(id)}
+        incrementAmount={this.incrementAmount(id)}
+        decreaseAmount={this.decreaseAmount(id)} />)
+  }
+
+  incrementAmount (id) {
+    return () => {
+      this.props.incrementAmountOfItem(id)
+    }
+  }
+
+  decreaseAmount (id) {
+    return () => {
+      this.props.decreaseAmountOfItem(id)
+    }
   }
 
   calculateSubtotal () {
     const { items } = this.props.cart
     if (items.length > 0) {
-      return items.map(item => parseFloat(`${item.price.to.integers.replace(/[^\d]+/g, '')}.${item.price.to.decimals}`))
+      return items.map(item => item.amount * parseFloat(`${item.product.price.to.integers.replace(/[^\d]+/g, '')}.${item.product.price.to.decimals}`))
         .reduce((acc, value) => acc + value)
     }
     return 0.00
@@ -27,19 +64,12 @@ class Cart extends React.Component {
 
   extractProductList () {
     const { items } = this.props.cart
-    return items.filter((value, index, self) => self.indexOf(value) === index)
-      .map(element => {
-        return {
-          ...element,
-          amount: items.filter(item => item.id === element.id).length
-        }
-      })
+    return items
   }
 
   render () {
     const { toggleCart, cart } = this.props
     const cartItems = this.extractProductList()
-    console.log(cartItems)
     const subtotal = this.calculateSubtotal()
     return (
       <div className={`cart${cart.displayCart ? '--show' : ''}`}>
@@ -53,8 +83,13 @@ class Cart extends React.Component {
         <div className='cart__content'>
           {
             cartItems &&
-            cartItems.map(product => (
-              <CartItem key={product.id} item={product} />
+            cartItems.map(item => (
+              <CartItem
+                key={item.product.id}
+                item={item}
+                incrementAmount={this.incrementAmount}
+                decreaseAmount={this.decreaseAmount}
+                render={this.renderQuantityField} />
             ))
           }
         </div>
@@ -78,6 +113,9 @@ class Cart extends React.Component {
 
 Cart.propTypes = {
   toggleCart: PropTypes.func,
+  changeAmountOfItem: PropTypes.func,
+  incrementAmountOfItem: PropTypes.func,
+  decreaseAmountOfItem: PropTypes.func,
   cart: PropTypes.object
 }
 
@@ -88,7 +126,12 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ toggleCart }, dispatch)
+  return bindActionCreators({
+    toggleCart,
+    changeAmountOfItem,
+    incrementAmountOfItem,
+    decreaseAmountOfItem
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

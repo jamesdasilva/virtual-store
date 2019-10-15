@@ -14,6 +14,7 @@
   border: 0;
   padding: 0;
   margin: 7px 0 7px 7px;
+  cursor: pointer;
 }
 .quantity-field__btn-decrement div{
   box-sizing: content-box;
@@ -34,6 +35,7 @@
   border: 0;
   padding: 0;
   margin: 7px 7px 7px 0;
+  cursor: pointer;
 }
 .quantity-field__btn-increment div{
   box-sizing: content-box;

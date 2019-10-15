@@ -5,18 +5,22 @@ import './QuantityField.css'
 
 class QuantityField extends React.Component {
   render () {
+    const { value, incrementAmount, decreaseAmount, onChange } = this.props
     return (
       <div className='quantity-field'>
-        <button className='quantity-field__btn-decrement'><div>-</div></button>
-        <input className='quantity-field__value' type='text' value={this.props.value} />
-        <button className='quantity-field__btn-increment'><div>+</div></button>
+        <button className='quantity-field__btn-decrement' onClick={decreaseAmount}><div>-</div></button>
+        <input className='quantity-field__value' type='text' value={value} onChange={onChange} />
+        <button className='quantity-field__btn-increment' onClick={incrementAmount}><div>+</div></button>
       </div>
     )
   }
 }
 
 QuantityField.propTypes = {
-  value: PropTypes.number
+  value: PropTypes.number,
+  incrementAmount: PropTypes.func,
+  decreaseAmount: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 export default QuantityField

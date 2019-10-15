@@ -10,10 +10,18 @@ import whiteCart from '../../images/cart-white.svg'
 
 import { toggleCart } from '../../modules/cart-module'
 
+const totalItems = (items) => {
+  if (items.length > 0) {
+    return items.map(item => item.amount)
+      .reduce((acc, value) => acc + value)
+  }
+  return 0
+}
+
 const CartIcon = (props) => {
   return (
     <div className='cart-icon' onClick={props.toggleCart}>
-      <div className='cart-icon__count'>{props.cart.items.length}</div>
+      <div className='cart-icon__count'>{totalItems(props.cart.items)}</div>
       <img className='cart-icon__black-cart' src={blackCart} width={34} height={34} />
       <img className='cart-icon__white-cart' src={whiteCart} width={34} height={34} />
     </div>

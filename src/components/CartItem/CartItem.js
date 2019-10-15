@@ -3,26 +3,28 @@ import PropTypes from 'prop-types'
 
 import './CartItem.css'
 
-import QuantityField from '../QuantityField/QuantityField'
-
 class CartItem extends React.Component {
   render () {
-    const { item } = this.props
+    const { item, render } = this.props
     return (
       <div className='cart-item'>
         <div className='cart-item__thumb'>
-          <img src={item.picture} />
+          <img src={item.product.picture} />
         </div>
         <div className='cart-item__info'>
-          <h3 className='cart-item__name'>{item.name}</h3>
+          <h3 className='cart-item__name'>{item.product.name}</h3>
           <div className='cart-item__content'>
             <div className='cart-item__info-left'>
-              <div className='cart-item__code'>Cod. {item.id}</div>
-              <QuantityField value={item.amount} />
+              <div className='cart-item__code'>Cod. {item.product.id}</div>
+              {render(item.amount, item.product.id)}
             </div>
             <div className='cart-item__info-right'>
-              <div className='cart-item__from-price'>{item.price.from ? `${item.price.from.integers},${item.price.from.decimals}` : '--'}</div>
-              <div className='cart-item__to-price'>{`${item.price.to.integers},${item.price.to.decimals}`}</div>
+              <div className='cart-item__from-price'>
+                {item.product.price.from ? `${item.product.price.from.integers},${item.product.price.from.decimals}` : '--'}
+              </div>
+              <div className='cart-item__to-price'>
+                {`${item.product.price.to.integers},${item.product.price.to.decimals}`}
+              </div>
             </div>
           </div>
         </div>
@@ -32,7 +34,10 @@ class CartItem extends React.Component {
 }
 
 CartItem.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  incrementAmount: PropTypes.func,
+  decreaseAmount: PropTypes.func,
+  render: PropTypes.func
 }
 
 export default CartItem
