@@ -6,11 +6,18 @@
   min-height: 100vh;
 }
 .page-layout__header {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
   display: flex;
   justify-content: center;
   flex-grow: 0;
-  box-sizing: border-box;
   height: 60px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, .2); 
+  background-color: #fff;
 }
 .page-layout__body {
   box-sizing: border-box;
@@ -18,7 +25,7 @@
   display: flex;
   flex-grow: 2;
   justify-content: center;
-  padding: 40px 0 10px;
+  padding: 70px 0 10px;
 }
 @media screen and (max-width: 320px) {
   .page-layout__header {
