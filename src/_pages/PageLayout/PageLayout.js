@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './PageLayout.css'
 
 const PageLayout = ({ Header, ProductCatalog, FeedbackMessage, Cart }) => {
@@ -14,6 +15,13 @@ const PageLayout = ({ Header, ProductCatalog, FeedbackMessage, Cart }) => {
       </div>
     </div>
   )
+}
+
+PageLayout.propTypes = {
+  Header: PropTypes.func,
+  ProductCatalog: PropTypes.object,
+  FeedbackMessage: PropTypes.func,
+  Cart: PropTypes.object
 }
 
 export default PageLayout

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Header.css'
 import logo from '../../_images/logo.svg'
 
@@ -18,6 +19,10 @@ const Header = ({ CartIcon }) => {
       </div>
     </div>
   )
+}
+
+Header.propTypes = {
+  CartIcon: PropTypes.object
 }
 
 export default Header
