@@ -16,7 +16,7 @@ import {
   deleteProductOfCart,
   getFreight,
   setCep
-} from '../../modules/cart-module'
+} from '../cart-module'
 
 class Cart extends React.Component {
   constructor (props) {

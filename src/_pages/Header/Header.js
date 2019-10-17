@@ -1,9 +1,8 @@
 import React from 'react'
 import './Header.css'
-import logo from '../../images/logo.svg'
-import CartIcon from '../CartIcon/CartIcon'
+import logo from '../../_images/logo.svg'
 
-const Header = () => {
+const Header = ({ CartIcon }) => {
   return (
     <div className='header'>
       <div className='header__container'>

@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new StyleLintPlugin({
-      files: './src/styles/**/*.css'
+      files: './src/_styles/**/*.css'
     }),
     new MiniCssExtractPlugin({
       filename: '[name]-[hash].css',
