@@ -104,16 +104,16 @@ class Cart extends React.Component {
         </div>
         <div className='cart__content'>
           {
-            cartItems &&
-            cartItems.map(item => (
-              <CartItem
-                key={item.product.id}
-                item={item}
-                incrementAmount={this.incrementAmount}
-                decreaseAmount={this.decreaseAmount}
-                render={this.renderQuantityField}
-                deleteItem={this.deleteItem(item.product.id)} />
-            ))
+            cartItems && cartItems.length > 0
+              ? cartItems.map(item => (
+                <CartItem
+                  key={item.product.id}
+                  item={item}
+                  incrementAmount={this.incrementAmount}
+                  decreaseAmount={this.decreaseAmount}
+                  render={this.renderQuantityField}
+                  deleteItem={this.deleteItem(item.product.id)} />
+              )) : (<div className='cart__empty-message'>Seu carrinho está vazio</div>)
           }
         </div>
         <div className='cart__freight-display'>

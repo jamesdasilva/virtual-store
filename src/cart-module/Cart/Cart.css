@@ -54,13 +54,15 @@
   padding: 0 20px;
   background-color: #fff;
 }
-.cart__freight-calc input[type='text'] {
+.cart__freight-calc input[type='text'],
+.cart__freight-calc input[type='text']:focus,
+.cart__freight-calc input[type='text']:active {
   flex-grow: 1;
   height: 26px;
   padding: 0 10px;
   background-color: #fff;
   border: 1px solid #ddd;
-  color: #ddd;
+  color: #444;
   border-radius: 15px;
 }
 .cart__content {
@@ -70,8 +72,41 @@
   flex-grow: 1;
   flex-shrink: 1;
   padding: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: #fff;
+}
+.cart__content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.cart__content::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.cart__content::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+.cart__content::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.cart__content::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+.cart__content::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 55px;
+}
+.cart__content::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+.cart__content::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+.cart__content::-webkit-scrollbar-corner {
+  background: transparent;
 }
 .cart__freight-display {
   box-sizing: border-box;
@@ -80,6 +115,8 @@
   align-items: center;
   padding: 10px;
   height: 50px;
+  font-size: 12px;
+  color: #444
 }
 .cart__subtotal {
   box-sizing: border-box;
@@ -88,6 +125,8 @@
   align-items: center;
   padding: 10px;
   height: 50px;
+  font-size: 12px;
+  color: #444
 }
 .cart__buy-button {
   box-sizing: border-box;
@@ -103,4 +142,9 @@
   border: 0;
   background-color: #78BE20;
   color: #fff
+}
+.cart__empty-message {
+  text-align: center;
+  font-size: 12px;
+  color: #444
 }
