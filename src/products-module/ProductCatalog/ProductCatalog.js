@@ -29,16 +29,17 @@ class ProductCatalog extends Component {
     return (
       <div className='prod-catalog'>
         {
-          this.props.productList &&
-          this.props.productList.map(product => (
-            <div className='prod-catalog__item' key={product.id}>
-              <CatalogProduct
-                dataProduct={product}
-                actionButtonRender={() => <AddToCartButton
-                  clickHandler={this.colocarNoCarrinho}
-                  product={product} />} />
-            </div>
-          ))
+          !this.props.isFetching
+            ? this.props.productList &&
+              this.props.productList.map(product => (
+                <div className='prod-catalog__item' key={product.id}>
+                  <CatalogProduct
+                    dataProduct={product}
+                    actionButtonRender={() => <AddToCartButton
+                      clickHandler={this.colocarNoCarrinho}
+                      product={product} />} />
+                </div>
+              )) : (<div className="prod-catalog__is-fetching"><div class="lds-circle"><div></div></div></div>)
         }
       </div>
     )
@@ -48,12 +49,14 @@ class ProductCatalog extends Component {
 ProductCatalog.propTypes = {
   getProducts: PropTypes.func,
   insertProductInCart: PropTypes.func,
-  productList: PropTypes.array
+  productList: PropTypes.array,
+  isFetching: PropTypes.bool
 }
 
 function mapStateToProps (state) {
   return {
-    productList: state.productList,
+    productList: state.productList.products,
+    isFetching: state.productList.isFetching,
     cart: state.cart
   }
 }
