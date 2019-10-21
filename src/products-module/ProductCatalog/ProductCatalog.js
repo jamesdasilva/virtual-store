@@ -39,7 +39,7 @@ class ProductCatalog extends Component {
                       clickHandler={this.colocarNoCarrinho}
                       product={product} />} />
                 </div>
-              )) : (<div className="prod-catalog__is-fetching"><div class="lds-circle"><div></div></div></div>)
+              )) : (<div className="prod-catalog__is-fetching"><div className="lds-circle"><div></div></div></div>)
         }
       </div>
     )

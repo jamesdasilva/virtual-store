@@ -20,8 +20,10 @@ const totalItems = (items) => {
 
 const CartIcon = (props) => {
   return (
-    <div className='cart-icon' onClick={props.toggleCart}>
-      <div className='cart-icon__count'>{totalItems(props.cart.items)}</div>
+    <div data-testid='cart-icon' className='cart-icon' onClick={props.toggleCart}>
+      <div 
+        data-testid='cart-icon-count'
+        className='cart-icon__count'>{totalItems(props.cart.items)}</div>
       <img className='cart-icon__black-cart' src={blackCart} width={34} height={34} />
       <img className='cart-icon__white-cart' src={whiteCart} width={34} height={34} />
     </div>

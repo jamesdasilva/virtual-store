@@ -4,7 +4,10 @@ import './AddToCartButton.css'
 
 const AddToCartButton = ({ clickHandler, product }) => {
   return (
-    <button className='add-to-cart-button' onClick={() => clickHandler(product)}>
+    <button
+      data-testid='add-to-cart-button'
+      className='add-to-cart-button'
+      onClick={() => clickHandler(product)}>
       Adicionar ao carrinho
     </button>
   )
