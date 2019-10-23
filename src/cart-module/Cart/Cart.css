@@ -46,25 +46,6 @@
   color: #78BE20;
   cursor: pointer;
 }
-.cart__freight-calc {
-  display:flex;
-  justify-content: center; 
-  align-items: center;
-  height: 50px;
-  padding: 0 20px;
-  background-color: #fff;
-}
-.cart__freight-calc input[type='text'],
-.cart__freight-calc input[type='text']:focus,
-.cart__freight-calc input[type='text']:active {
-  flex-grow: 1;
-  height: 26px;
-  padding: 0 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  color: #444;
-  border-radius: 15px;
-}
 .cart__content {
   display: flex;
   flex-direction: column;

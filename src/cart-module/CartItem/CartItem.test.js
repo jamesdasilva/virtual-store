@@ -3,14 +3,14 @@ import { render, cleanup, waitForElement, fireEvent } from '@testing-library/rea
 import React from 'react'
 import CartItem from './CartItem'
 
-let renderAddToCartButtonSpy
+let renderQuantityFieldSpy
 let deleteItemSpy
 let itemMock
 
 afterEach(cleanup)
 
 beforeEach(() => {
-  renderAddToCartButtonSpy = jest.fn()
+  renderQuantityFieldSpy = jest.fn()
   deleteItemSpy = jest.fn()
   itemMock = { 
     amount: 3,
@@ -30,7 +30,7 @@ describe('<CartItem /> spec', () => {
   test('Snapshot test', async () => {
     const { getByTestId } = render(
       <CartItem
-        renderAddToCartButton={renderAddToCartButtonSpy}
+        renderQuantityField={renderQuantityFieldSpy}
         item={itemMock}
         deleteItem={deleteItemSpy} />
       )
@@ -41,7 +41,7 @@ describe('<CartItem /> spec', () => {
   test('Should display name, code, image and prices', async () => {    
     const { getByText } = render(
       <CartItem
-        renderAddToCartButton={renderAddToCartButtonSpy}
+        renderQuantityField={renderQuantityFieldSpy}
         item={itemMock}
         deleteItem={deleteItemSpy} />
       )
@@ -64,17 +64,17 @@ describe('<CartItem /> spec', () => {
   test('Should call the render function', async () => {
     render(
       <CartItem
-        renderAddToCartButton={renderAddToCartButtonSpy}
+        renderQuantityField={renderQuantityFieldSpy}
         item={itemMock}
         deleteItem={deleteItemSpy} />
       )
-    expect(renderAddToCartButtonSpy).toBeCalled()
+    expect(renderQuantityFieldSpy).toBeCalled()
   })
 
   test('Should call deleteItem function when user clicks icon close', async () => {
     const { getByTestId } = render(
       <CartItem
-        renderAddToCartButton={renderAddToCartButtonSpy}
+        renderQuantityField={renderQuantityFieldSpy}
         item={itemMock}
         deleteItem={deleteItemSpy} />
       )

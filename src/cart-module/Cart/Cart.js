@@ -7,6 +7,7 @@ import './Cart.css'
 
 import CartItem from '../CartItem/CartItem'
 import QuantityField from '../QuantityField/QuantityField'
+import FreightCalcInput from '../FreightCalcInput/FreightCalcInput'
 
 import {
   toggleCart,
@@ -91,17 +92,12 @@ class Cart extends React.Component {
     const cartItems = this.extractProductList()
     const subtotal = this.calculateSubtotal()
     return (
-      <div className={`cart${cart.displayCart ? '--show' : ''}`}>
+      <div className={`cart${cart.displayCart ? '--show' : ''}`} data-testid='cart'>
         <div className='cart__title'>
           <span className='cart__close-icon' onClick={toggleCart}>+</span>
           <h3>Meus Produtos</h3>
         </div>
-        <div className='cart__freight-calc'>
-          <input type='text'
-            placeholder='Calcular CEP'
-            value={cart.freight.cep}
-            onChange={this.onChangeCep} />
-        </div>
+        <FreightCalcInput value={cart.freight.cep} onChange={this.onChangeCep} />
         <div className='cart__content'>
           {
             cartItems && cartItems.length > 0
@@ -109,9 +105,7 @@ class Cart extends React.Component {
                 <CartItem
                   key={item.product.id}
                   item={item}
-                  incrementAmount={this.incrementAmount}
-                  decreaseAmount={this.decreaseAmount}
-                  renderAddToCartButton={this.renderQuantityField}
+                  renderQuantityField={this.renderQuantityField}
                   deleteItem={this.deleteItem(item.product.id)} />
               )) : (<div className='cart__empty-message'>Seu carrinho está vazio</div>)
           }
@@ -125,9 +119,7 @@ class Cart extends React.Component {
           <span>R$ { Number(subtotal).toFixed(2) }</span>
         </div>
         <div className='cart__buy-button'>
-          <button>
-            Comprar
-          </button>
+          <button>Comprar</button>
         </div>
       </div>
     )
