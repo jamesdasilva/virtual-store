@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddToCartButton /> spec Snapshot test 1`] = `
+<button
+  class="add-to-cart-button"
+  data-testid="add-to-cart-button"
+>
+  Adicionar ao carrinho
+</button>
+`;

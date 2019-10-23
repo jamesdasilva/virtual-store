@@ -18,6 +18,18 @@ beforeEach(() => {
 })
 
 describe('<QuantityField /> spec', () => {
+  test('Snapshot test', async () => {
+    const { getByTestId } = render(
+      <QuantityField
+        value={valueMock}
+        incrementAmount={incrementAmountSpy}
+        decreaseAmount={decreaseAmountSpy}
+        onChange={onChangeSpy} />
+      )
+    const quantityField = await waitForElement(() => getByTestId('quantity-field'))
+    expect(quantityField).toMatchSnapshot()
+  })
+
   test('Should display value', async () => {
     const { getByDisplayValue } = render(
       <QuantityField

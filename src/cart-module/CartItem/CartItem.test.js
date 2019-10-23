@@ -3,101 +3,84 @@ import { render, cleanup, waitForElement, fireEvent } from '@testing-library/rea
 import React from 'react'
 import CartItem from './CartItem'
 
+let renderAddToCartButtonSpy
+let deleteItemSpy
+let itemMock
+
 afterEach(cleanup)
 
-describe('<CartItem /> spec', () => {
-  test('Should display name, code, image and prices', async () => {
-    const handlerClickMock1 = jest.fn()
-    const handlerClickMock2 = jest.fn()
-    const objectMock = { 
-      amount: 3,
-      product: {
-        id: 123,
-        name: 'Test Name',
-        picture: 'http://uri.com/mock',
-        price: {
-          from: {integers: "2.849", decimals: "90"},
-          to: {integers: "1.849", decimals: "90"}
-        }
+beforeEach(() => {
+  renderAddToCartButtonSpy = jest.fn()
+  deleteItemSpy = jest.fn()
+  itemMock = { 
+    amount: 3,
+    product: {
+      id: 123,
+      name: 'Test Name',
+      picture: 'http://uri.com/mock',
+      price: {
+        from: {integers: "2.849", decimals: "90"},
+        to: {integers: "1.849", decimals: "90"}
       }
     }
-    
+  }
+})
+
+describe('<CartItem /> spec', () => {
+  test('Snapshot test', async () => {
+    const { getByTestId } = render(
+      <CartItem
+        renderAddToCartButton={renderAddToCartButtonSpy}
+        item={itemMock}
+        deleteItem={deleteItemSpy} />
+      )
+    const cartItem = await waitForElement(() => getByTestId('cart-item'))
+    expect(cartItem).toMatchSnapshot()
+  })
+
+  test('Should display name, code, image and prices', async () => {    
     const { getByText } = render(
       <CartItem
-        render={handlerClickMock1}
-        item={objectMock}
-        deleteItem={handlerClickMock2} />
+        renderAddToCartButton={renderAddToCartButtonSpy}
+        item={itemMock}
+        deleteItem={deleteItemSpy} />
       )
 
-    const productName = await waitForElement(() => getByText(objectMock.product.name))
+    const productName = await waitForElement(() => getByText(itemMock.product.name))
     expect(productName).toBeDefined()
 
-    const productId = await waitForElement(() => getByText(`Cod. ${objectMock.product.id}`))
+    const productId = await waitForElement(() => getByText(`Cod. ${itemMock.product.id}`))
     expect(productId).toBeDefined()
 
     const productPriceFrom = await waitForElement(
-      () => getByText(`${objectMock.product.price.from.integers},${objectMock.product.price.from.decimals}`))
+      () => getByText(`${itemMock.product.price.from.integers},${itemMock.product.price.from.decimals}`))
     expect(productPriceFrom).toBeDefined()
     
     const productPriceTo = await waitForElement(
-      () => getByText(`${objectMock.product.price.to.integers},${objectMock.product.price.to.decimals}`))
+      () => getByText(`${itemMock.product.price.to.integers},${itemMock.product.price.to.decimals}`))
     expect(productPriceTo).toBeDefined()
   })
 
   test('Should call the render function', async () => {
-    const handlerClickMock1 = jest.fn()
-    const handlerClickMock2 = jest.fn()
-    const objectMock = { 
-      amount: 3,
-      product: {
-        id: 123,
-        name: 'Test Name',
-        picture: 'http://uri.com/mock',
-        price: {
-          from: {integers: "2.849", decimals: "90"},
-          to: {integers: "1.849", decimals: "90"}
-        }
-      }
-    }
-    
     render(
       <CartItem
-        render={handlerClickMock1}
-        item={objectMock}
-        deleteItem={handlerClickMock2} />
+        renderAddToCartButton={renderAddToCartButtonSpy}
+        item={itemMock}
+        deleteItem={deleteItemSpy} />
       )
-
-    expect(handlerClickMock1).toBeCalled()
+    expect(renderAddToCartButtonSpy).toBeCalled()
   })
 
   test('Should call deleteItem function when user clicks icon close', async () => {
-    const handlerClickMock1 = jest.fn()
-    const handlerClickMock2 = jest.fn()
-    const objectMock = { 
-      amount: 3,
-      product: {
-        id: 123,
-        name: 'Test Name',
-        picture: 'http://uri.com/mock',
-        price: {
-          from: {integers: "2.849", decimals: "90"},
-          to: {integers: "1.849", decimals: "90"}
-        }
-      }
-    }
-    
     const { getByTestId } = render(
       <CartItem
-        render={handlerClickMock1}
-        item={objectMock}
-        deleteItem={handlerClickMock2} />
+        renderAddToCartButton={renderAddToCartButtonSpy}
+        item={itemMock}
+        deleteItem={deleteItemSpy} />
       )
-
     const cartItemClose = await waitForElement(() => getByTestId('cart-item-close'))
-
     fireEvent.click(cartItemClose)
-
-    expect(handlerClickMock2).toBeCalled()
+    expect(deleteItemSpy).toBeCalled()
   })
 
 })

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartIcon /> spec Snapshot test 1`] = `
+<div
+  class="cart-icon"
+  data-testid="cart-icon"
+>
+  <div
+    class="cart-icon__count"
+    data-testid="cart-icon-count"
+  >
+    0
+  </div>
+  <img
+    class="cart-icon__black-cart"
+    height="34"
+    src="test-file-stub"
+    width="34"
+  />
+  <img
+    class="cart-icon__white-cart"
+    height="34"
+    src="test-file-stub"
+    width="34"
+  />
+</div>
+`;

@@ -7,27 +7,41 @@ import CartIcon from './CartIcon'
 import { toggleCart } from '../cart-module'
 
 let mockStore;
+
+afterEach(cleanup)
+
 beforeEach(() => {
   mockStore = configureStore([]);
 });
-afterEach(cleanup)
 
 describe('<CartIcon /> spec', () => {
+  test('Snapshot test', async () => {
+    const store = mockStore({
+      cart: {
+        items: []
+      }
+    });
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <CartIcon />
+      </Provider>
+    )
+    const cartIcon = await waitForElement(() => getByTestId('cart-icon'))
+    expect(cartIcon).toMatchSnapshot()
+  })
+  
   test('Should display number 0 if cart is empty', async () => {
     const store = mockStore({
       cart: {
         items: []
       }
     });
-    
     const { getByTestId } = render(
       <Provider store={store}>
         <CartIcon />
       </Provider>
     )
-
     const cartIconCount = await waitForElement(() => getByTestId('cart-icon-count'))
-
     expect(cartIconCount).toHaveTextContent('0')
   })
 
@@ -40,37 +54,29 @@ describe('<CartIcon /> spec', () => {
         ]
       }
     });
-    
     const { getByTestId } = render(
       <Provider store={store}>
         <CartIcon />
       </Provider>
     )
-
     const cartIconCount = await waitForElement(() => getByTestId('cart-icon-count'))
-
     expect(cartIconCount).toHaveTextContent('3')
   })
 
-  test('Should fire the toggleCart function when clicked', async () => {
+  test('Should call toggleCart function when clicked', async () => {
     const store = mockStore({
       cart: {
         items: [ ]
       }
     });
-
     store.dispatch = jest.fn();
-    
     const { getByTestId } = render(
       <Provider store={store}>
         <CartIcon />
       </Provider>
     )
-
     const cartIcon = await waitForElement(() => getByTestId('cart-icon'))
-
     fireEvent.click(cartIcon)
-
     expect(store.dispatch).toBeCalledWith(toggleCart())
   })
 

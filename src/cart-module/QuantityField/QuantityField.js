@@ -7,7 +7,7 @@ class QuantityField extends React.Component {
   render () {
     const { value, incrementAmount, decreaseAmount, onChange } = this.props
     return (
-      <div className='quantity-field'>
+      <div className='quantity-field' data-testid='quantity-field'>
         <button
           className='quantity-field__btn-decrement'
           data-testid='decrease-button'

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QuantityField /> spec Snapshot test 1`] = `
+<div
+  class="quantity-field"
+  data-testid="quantity-field"
+>
+  <button
+    class="quantity-field__btn-decrement"
+    data-testid="decrease-button"
+  >
+    <div>
+      -
+    </div>
+  </button>
+  <input
+    class="quantity-field__value"
+    type="text"
+    value="2"
+  />
+  <button
+    class="quantity-field__btn-increment"
+    data-testid="increment-button"
+  >
+    <div>
+      +
+    </div>
+  </button>
+</div>
+`;

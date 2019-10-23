@@ -111,7 +111,7 @@ class Cart extends React.Component {
                   item={item}
                   incrementAmount={this.incrementAmount}
                   decreaseAmount={this.decreaseAmount}
-                  render={this.renderQuantityField}
+                  renderAddToCartButton={this.renderQuantityField}
                   deleteItem={this.deleteItem(item.product.id)} />
               )) : (<div className='cart__empty-message'>Seu carrinho está vazio</div>)
           }

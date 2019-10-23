@@ -5,7 +5,7 @@ import './CartItem.css'
 
 class CartItem extends React.Component {
   render () {
-    const { item, render, deleteItem } = this.props
+    const { item, renderAddToCartButton, deleteItem } = this.props
     return (
       <div className='cart-item' data-testid='cart-item'>
         <div className='cart-item__thumb'>
@@ -21,7 +21,7 @@ class CartItem extends React.Component {
           <div className='cart-item__content'>
             <div className='cart-item__info-left'>
               <div className='cart-item__code'>Cod. {item.product.id}</div>
-              {render(item.amount, item.product.id)}
+              {renderAddToCartButton(item.amount, item.product.id)}
             </div>
             <div className='cart-item__info-right'>
               <div className='cart-item__from-price'>
@@ -40,7 +40,7 @@ class CartItem extends React.Component {
 
 CartItem.propTypes = {
   item: PropTypes.object,
-  render: PropTypes.func,
+  renderAddToCartButton: PropTypes.func,
   deleteItem: PropTypes.func
 }
 

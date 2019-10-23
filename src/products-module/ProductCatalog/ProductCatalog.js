@@ -36,8 +36,8 @@ class ProductCatalog extends Component {
                   <CatalogProduct
                     dataProduct={product}
                     actionButtonRender={() => <AddToCartButton
-                      clickHandler={this.colocarNoCarrinho}
-                      product={product} />} />
+                      addItemToCart={this.colocarNoCarrinho}
+                      item={product} />} />
                 </div>
               )) : (<div className="prod-catalog__is-fetching"><div className="lds-circle"><div></div></div></div>)
         }

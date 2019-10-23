@@ -6,21 +6,28 @@ import AddToCartButton from './AddToCartButton'
 afterEach(cleanup)
 
 describe('<AddToCartButton /> spec', () => {
-  test('Should fire the clickHandler function, passing the product parameter, when clicked', async () => {
-    const handlerClickMock = jest.fn()
-    const objectMock = { test: "test"}
-    
+  test('Snapshot test', async () => {
+    const addItemToCartSpy = jest.fn()
+    const objectMock = { test: "test" }
     const { getByTestId } = render(
       <AddToCartButton
-        clickHandler={handlerClickMock}
-        product={objectMock} />
+        addItemToCart={addItemToCartSpy}
+        item={objectMock} />
       )
-
     const addToCartButton = await waitForElement(() => getByTestId('add-to-cart-button'))
-
-    fireEvent.click(addToCartButton)
-
-    expect(handlerClickMock).toBeCalledWith(objectMock)
+    expect(addToCartButton).toMatchSnapshot()
   })
-
+  
+  test('Should call clickHandler function, passing the item parameter, when clicked', async () => {
+    const addItemToCartSpy = jest.fn()
+    const objectMock = { test: "test" }
+    const { getByTestId } = render(
+      <AddToCartButton
+        addItemToCart={addItemToCartSpy}
+        item={objectMock} />
+      )
+    const addToCartButton = await waitForElement(() => getByTestId('add-to-cart-button'))
+    fireEvent.click(addToCartButton)
+    expect(addItemToCartSpy).toBeCalledWith(objectMock)
+  })
 })
