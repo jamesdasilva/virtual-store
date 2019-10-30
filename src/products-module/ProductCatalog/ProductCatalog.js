@@ -9,7 +9,7 @@ import AddToCartButton from '../../cart-module/AddToCartButton/AddToCartButton'
 import CatalogProduct from '../CatalogProduct/CatalogProduct'
 
 import { getProducts } from '../products-module'
-import { insertProductInCart } from '../../cart-module/cart-module'
+import { insertProductInCart } from '../../cart-module/model/CartActions'
 
 class ProductCatalog extends Component {
   constructor (props) {

@@ -9,7 +9,7 @@ import './_styles/main.css'
 import App from './App'
 
 import Products from './products-module/products-module'
-import Cart from './cart-module/cart-module'
+import Cart from './cart-module/model/CartReducer'
 
 const reducers = combineReducers({
   productList: Products,

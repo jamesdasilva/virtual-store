@@ -15,9 +15,9 @@ import {
   incrementAmountOfItem,
   decreaseAmountOfItem,
   deleteProductOfCart,
-  getFreight,
+  setFreight,
   setCep
-} from '../cart-module'
+} from '../model/CartActions'
 
 class Cart extends React.Component {
   constructor (props) {
@@ -82,7 +82,7 @@ class Cart extends React.Component {
     this.props.setCep(e.target.value)
     if (e.target.value.length >= 8) {
       setTimeout(() => {
-        this.props.getFreight(this.props.cart.freight.cep)
+        this.props.setFreight(this.props.cart.freight.cep)
       }, 1000)
     }
   }
@@ -132,7 +132,7 @@ Cart.propTypes = {
   incrementAmountOfItem: PropTypes.func,
   decreaseAmountOfItem: PropTypes.func,
   deleteProductOfCart: PropTypes.func,
-  getFreight: PropTypes.func,
+  setFreight: PropTypes.func,
   setCep: PropTypes.func,
   cart: PropTypes.object
 }
@@ -150,7 +150,7 @@ function mapDispatchToProps (dispatch) {
     incrementAmountOfItem,
     decreaseAmountOfItem,
     deleteProductOfCart,
-    getFreight,
+    setFreight,
     setCep
   }, dispatch)
 }

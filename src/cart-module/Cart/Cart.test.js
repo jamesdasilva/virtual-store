@@ -4,7 +4,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import Cart from './Cart'
-import { incrementAmountOfItem } from '../cart-module'
+import { incrementAmountOfItem } from '../model/CartActions'
 
 let mockStore;
 let store
