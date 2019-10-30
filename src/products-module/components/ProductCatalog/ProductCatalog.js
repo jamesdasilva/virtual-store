@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 
 import './ProductCatalog.css'
 
-import AddToCartButton from '../../cart-module/AddToCartButton/AddToCartButton'
+import AddToCartButton from '../../../cart-module/AddToCartButton/AddToCartButton'
 import CatalogProduct from '../CatalogProduct/CatalogProduct'
 
-import { getProducts } from '../products-module'
-import { insertProductInCart } from '../../cart-module/model/CartActions'
+import { getProducts } from '../../model/ProductsActions'
+import { insertProductInCart } from '../../../cart-module/model/CartActions'
 
 class ProductCatalog extends Component {
   constructor (props) {

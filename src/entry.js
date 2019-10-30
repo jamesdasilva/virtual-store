@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import './_styles/main.css'
 import App from './App'
 
-import Products from './products-module/products-module'
+import Products from './products-module/model/ProductsReducer'
 import Cart from './cart-module/model/CartReducer'
 
 const reducers = combineReducers({
