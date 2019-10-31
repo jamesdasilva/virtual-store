@@ -3,9 +3,9 @@ import PageLayout from './_pages/PageLayout/PageLayout'
 
 import Header from './_pages/Header/Header'
 import ProductCatalog from './products-module/components/ProductCatalog/ProductCatalog'
-import FeedbackMessage from './cart-module/FeedbackMessage/FeedbackMessage'
-import Cart from './cart-module/Cart/Cart'
-import CartIcon from './cart-module/CartIcon/CartIcon'
+import FeedbackMessage from './cart-module/components/FeedbackMessage/FeedbackMessage'
+import Cart from './cart-module/components/Cart/Cart'
+import CartIcon from './cart-module/components/CartIcon/CartIcon'
 
 const renderHeader = () => {
   return <Header CartIcon={CartIcon} />

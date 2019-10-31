@@ -5,10 +5,10 @@ import { connect } from 'react-redux'
 
 import './CartIcon.css'
 
-import blackCart from '../../_images/cart.svg'
-import whiteCart from '../../_images/cart-white.svg'
+import blackCart from '../../../_images/cart.svg'
+import whiteCart from '../../../_images/cart-white.svg'
 
-import { toggleCart } from '../model/CartActions'
+import { toggleCart } from '../../model/CartActions'
 
 const totalItems = (items) => {
   if (items.length > 0) {

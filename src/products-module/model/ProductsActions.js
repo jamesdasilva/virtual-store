@@ -41,7 +41,7 @@ export const setProducts = () => {
     }).catch(() => {
       dispatch({
         type: types.RELOAD_PRODUCTS,
-        payload: [ ]
+        payload: []
       })
       dispatch(clearIsFetching())
       dispatch(setErrorRequest(true))

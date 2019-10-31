@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import './ProductCatalog.css'
 
-import AddToCartButton from '../../../cart-module/AddToCartButton/AddToCartButton'
+import AddToCartButton from '../../../cart-module/components/AddToCartButton/AddToCartButton'
 import CatalogProduct from '../CatalogProduct/CatalogProduct'
 
 import { setProducts } from '../../model/ProductsActions'

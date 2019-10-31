@@ -17,7 +17,7 @@ import {
   deleteProductOfCart,
   setFreight,
   setCep
-} from '../model/CartActions'
+} from '../../model/CartActions'
 
 class Cart extends React.Component {
   constructor (props) {
