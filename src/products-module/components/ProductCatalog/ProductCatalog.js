@@ -8,7 +8,7 @@ import './ProductCatalog.css'
 import AddToCartButton from '../../../cart-module/AddToCartButton/AddToCartButton'
 import CatalogProduct from '../CatalogProduct/CatalogProduct'
 
-import { getProducts } from '../../model/ProductsActions'
+import { setProducts } from '../../model/ProductsActions'
 import { insertProductInCart } from '../../../cart-module/model/CartActions'
 
 class ProductCatalog extends Component {
@@ -18,7 +18,7 @@ class ProductCatalog extends Component {
   }
 
   componentDidMount () {
-    this.props.getProducts()
+    this.props.setProducts()
   }
 
   colocarNoCarrinho (product) {
@@ -47,7 +47,7 @@ class ProductCatalog extends Component {
 }
 
 ProductCatalog.propTypes = {
-  getProducts: PropTypes.func,
+  setProducts: PropTypes.func,
   insertProductInCart: PropTypes.func,
   productList: PropTypes.array,
   isFetching: PropTypes.bool
@@ -62,7 +62,7 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ getProducts, insertProductInCart }, dispatch)
+  return bindActionCreators({ setProducts, insertProductInCart }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCatalog)

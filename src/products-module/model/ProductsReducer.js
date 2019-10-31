@@ -2,6 +2,7 @@ import * as types from './ProductsTypes'
 
 const initialState = {
   products: [],
+  requestError: undefined,
   isFetching: false
 }
 
@@ -21,6 +22,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isFetching: false
+      }
+    case types.ERROR_REQUEST:
+      return {
+        ...state,
+        requestError: action.payload
       }
     default:
       return state

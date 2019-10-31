@@ -20,19 +20,31 @@ export const clearIsFetching = () => {
   }
 }
 
-export const getProducts = () => {
+export const setErrorRequest = (error) => {
+  return {
+    type: types.ERROR_REQUEST,
+    payload: error
+  }
+}
+
+export const setProducts = () => {
   return (dispatch) => {
     dispatch(setIsFetching())
     const url = 'https://us-central1-boitata-233919.cloudfunctions.net/api/products'
-    axios({
-      method: 'get',
-      url: url,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((response) => {
-      dispatch(reloadProducts(response.data))
+    return axios.get(url).then((response) => {
+      dispatch({
+        type: types.RELOAD_PRODUCTS,
+        payload: response.data
+      })
       dispatch(clearIsFetching())
+      dispatch(setErrorRequest(false))
+    }).catch(() => {
+      dispatch({
+        type: types.RELOAD_PRODUCTS,
+        payload: [ ]
+      })
+      dispatch(clearIsFetching())
+      dispatch(setErrorRequest(true))
     })
   }
 }
