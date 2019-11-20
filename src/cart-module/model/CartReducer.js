@@ -3,6 +3,7 @@ import * as actions from './CartTypes'
 const initialState = {
   items: [],
   displayCart: false,
+  displayFeedbackMsg: true,
   freight: {
     cep: undefined,
     value: undefined
@@ -108,6 +109,16 @@ export default function (state = initialState, action) {
           cep: action.payload.cep,
           value: action.payload.freight
         }
+      }
+    case actions.SHOW_FEEDBACK_MESSAGE:
+      return {
+        ...state,
+        displayFeedbackMsg: true
+      }
+    case actions.HIDDEN_FEEDBACK_MESSAGE:
+      return {
+        ...state,
+        displayFeedbackMsg: false
       }
     default:
       return state

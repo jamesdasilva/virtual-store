@@ -3,7 +3,6 @@ import PageLayout from './_pages/PageLayout/PageLayout'
 
 import Header from './_pages/Header/Header'
 import ProductCatalog from './products-module/components/ProductCatalog/ProductCatalog'
-import FeedbackMessage from './cart-module/components/FeedbackMessage/FeedbackMessage'
 import Cart from './cart-module/components/Cart/Cart'
 import CartIcon from './cart-module/components/CartIcon/CartIcon'
 
@@ -15,7 +14,6 @@ const App = () => (
   <PageLayout
     Header={renderHeader}
     ProductCatalog={ProductCatalog}
-    FeedbackMessage={FeedbackMessage}
     Cart={Cart} />
 )
 

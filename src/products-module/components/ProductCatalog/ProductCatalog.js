@@ -9,7 +9,7 @@ import AddToCartButton from '../../../cart-module/components/AddToCartButton/Add
 import CatalogProduct from '../CatalogProduct/CatalogProduct'
 
 import { setProducts } from '../../model/ProductsActions'
-import { insertProductInCart } from '../../../cart-module/model/CartActions'
+import { insertProductInCart, showFeedbackMessage } from '../../../cart-module/model/CartActions'
 
 class ProductCatalog extends Component {
   constructor (props) {
@@ -23,6 +23,7 @@ class ProductCatalog extends Component {
 
   colocarNoCarrinho (product) {
     this.props.insertProductInCart(product)
+    this.props.showFeedbackMessage()
   }
 
   render () {
@@ -49,6 +50,7 @@ class ProductCatalog extends Component {
 ProductCatalog.propTypes = {
   setProducts: PropTypes.func,
   insertProductInCart: PropTypes.func,
+  showFeedbackMessage: PropTypes.func,
   productList: PropTypes.array,
   isFetching: PropTypes.bool
 }
@@ -62,7 +64,11 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ setProducts, insertProductInCart }, dispatch)
+  return bindActionCreators({
+    setProducts,
+    insertProductInCart,
+    showFeedbackMessage
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCatalog)

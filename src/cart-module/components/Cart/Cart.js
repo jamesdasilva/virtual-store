@@ -8,6 +8,7 @@ import './Cart.css'
 import CartItem from '../CartItem/CartItem'
 import QuantityField from '../QuantityField/QuantityField'
 import FreightCalcInput from '../FreightCalcInput/FreightCalcInput'
+import FeedbackMessage from '../FeedbackMessage/FeedbackMessage'
 
 import {
   toggleCart,
@@ -16,7 +17,8 @@ import {
   decreaseAmountOfItem,
   deleteProductOfCart,
   setFreight,
-  setCep
+  setCep,
+  hiddenFeedbackMessage
 } from '../../model/CartActions'
 
 class Cart extends React.Component {
@@ -29,6 +31,7 @@ class Cart extends React.Component {
     this.calculateSubtotal = this.calculateSubtotal.bind(this)
     this.extractProductList = this.extractProductList.bind(this)
     this.onChangeCep = this.onChangeCep.bind(this)
+    this.closeFeedbackMessage = this.closeFeedbackMessage.bind(this)
   }
 
   changeAmount (id) {
@@ -87,6 +90,11 @@ class Cart extends React.Component {
     }
   }
 
+  closeFeedbackMessage () {
+    console.log('running closeFeedbackMessage...')
+    this.props.hiddenFeedbackMessage()
+  }
+
   render () {
     const { toggleCart, cart } = this.props
     const cartItems = this.extractProductList()
@@ -97,7 +105,9 @@ class Cart extends React.Component {
           <span className='cart__close-icon' onClick={toggleCart}>+</span>
           <h3>Meus Produtos</h3>
         </div>
-        <FreightCalcInput value={cart.freight.cep} onChange={this.onChangeCep} />
+        <FreightCalcInput
+          value={cart.freight.cep}
+          onChange={this.onChangeCep} />
         <div className='cart__content'>
           {
             cartItems && cartItems.length > 0
@@ -121,6 +131,10 @@ class Cart extends React.Component {
         <div className='cart__buy-button'>
           <button>Comprar</button>
         </div>
+        <FeedbackMessage
+          show={cart.displayFeedbackMsg}
+          onClose={this.closeFeedbackMessage}
+        />
       </div>
     )
   }
@@ -134,6 +148,7 @@ Cart.propTypes = {
   deleteProductOfCart: PropTypes.func,
   setFreight: PropTypes.func,
   setCep: PropTypes.func,
+  hiddenFeedbackMessage: PropTypes.func,
   cart: PropTypes.object
 }
 
@@ -151,7 +166,8 @@ function mapDispatchToProps (dispatch) {
     decreaseAmountOfItem,
     deleteProductOfCart,
     setFreight,
-    setCep
+    setCep,
+    hiddenFeedbackMessage
   }, dispatch)
 }
 

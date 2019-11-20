@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './PageLayout.css'
 
-const PageLayout = ({ Header, ProductCatalog, FeedbackMessage, Cart }) => {
+const PageLayout = ({ Header, ProductCatalog, Cart }) => {
   return (
     <div className='page-layout'>
       <div className='page-layout__header'>
@@ -10,7 +10,6 @@ const PageLayout = ({ Header, ProductCatalog, FeedbackMessage, Cart }) => {
       </div>
       <div className='page-layout__body'>
         <ProductCatalog />
-        <FeedbackMessage />
         <Cart />
       </div>
     </div>
@@ -20,7 +19,6 @@ const PageLayout = ({ Header, ProductCatalog, FeedbackMessage, Cart }) => {
 PageLayout.propTypes = {
   Header: PropTypes.func,
   ProductCatalog: PropTypes.object,
-  FeedbackMessage: PropTypes.func,
   Cart: PropTypes.object
 }
 

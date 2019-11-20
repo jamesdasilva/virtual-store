@@ -1,12 +1,28 @@
 .fdback-msg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 30px;
+  position: fixed;
+  bottom: -60px;
+  transition: bottom .3s;
+  left: 10px;
+  width: 300px;
+  height: 50px;
+  padding: 0 0 0 10px;
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
+  background-color: #158110;
+  color: #fff
+}
+.fdback-msg--show {
+  position: fixed;
+  bottom: 10px;
+  transition: bottom .3s;
+  left: 10px;
+  width: 300px;
+  height: 50px;
+  padding: 0 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #158110;
   color: #fff
 }
@@ -24,8 +40,11 @@
   line-height: 30px
 }
 .fdback-msg__close-icon {
-  font-size: 16px;
-  line-height: 30px
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
+  width: 30px;
+  cursor: pointer;
 }
 @media screen and (max-width: 320px) {
   .fdback-msg__content {

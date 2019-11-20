@@ -57,6 +57,18 @@ export const hiddenCart = () => {
   }
 }
 
+export const showFeedbackMessage = () => {
+  return {
+    type: types.SHOW_FEEDBACK_MESSAGE
+  }
+}
+
+export const hiddenFeedbackMessage = () => {
+  return {
+    type: types.HIDDEN_FEEDBACK_MESSAGE
+  }
+}
+
 export const toggleCart = () => {
   return {
     type: types.TOGGLE_CART
