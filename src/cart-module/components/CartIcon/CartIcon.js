@@ -8,7 +8,7 @@ import './CartIcon.css'
 import blackCart from '../../../_images/cart.svg'
 import whiteCart from '../../../_images/cart-white.svg'
 
-import { toggleCart } from '../../model/CartActions'
+import { toggleCart } from '../../data-store/CartActions'
 
 const totalItems = (items) => {
   if (items.length > 0) {

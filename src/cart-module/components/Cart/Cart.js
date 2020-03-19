@@ -19,7 +19,7 @@ import {
   setFreight,
   setCep,
   hiddenFeedbackMessage
-} from '../../model/CartActions'
+} from '../../data-store/CartActions'
 
 class Cart extends React.Component {
   constructor (props) {

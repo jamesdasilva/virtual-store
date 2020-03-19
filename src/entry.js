@@ -8,8 +8,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import './_styles/main.css'
 import App from './App'
 
-import Products from './products-module/model/ProductsReducer'
-import Cart from './cart-module/model/CartReducer'
+import Products from './products-module/data-store/ProductsReducer'
+import Cart from './cart-module/data-store/CartReducer'
 
 const reducers = combineReducers({
   productList: Products,

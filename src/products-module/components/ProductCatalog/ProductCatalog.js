@@ -8,8 +8,8 @@ import './ProductCatalog.css'
 import AddToCartButton from '../../../cart-module/components/AddToCartButton/AddToCartButton'
 import CatalogProduct from '../CatalogProduct/CatalogProduct'
 
-import { setProducts } from '../../model/ProductsActions'
-import { insertProductInCart, showFeedbackMessage } from '../../../cart-module/model/CartActions'
+import { setProducts } from '../../data-store/ProductsActions'
+import { insertProductInCart, showFeedbackMessage } from '../../../cart-module/data-store/CartActions'
 
 class ProductCatalog extends Component {
   constructor (props) {
