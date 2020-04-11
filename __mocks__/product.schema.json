@@ -1,0 +1,30 @@
+{
+  "schema": [{
+    "id": "idAutoIncrement",
+    "name": "enum:Furadeira de Impacto 1/2 1010W Hp2070 220V Makita",
+    "picture": "enum:https://i.picsum.photos/id/321/200/200.jpg",
+    "price": {
+      "to": {
+        "integers": "integer:965;999",
+        "decimals": "integer:96;99"
+      }
+    },
+    "unit": "enum:cada",
+    "installments": {
+      "amount": "integer:5;9",
+      "price": {
+        "integers": "integer:110;120",
+        "decimals": "integer:90;99"
+      }
+    },
+    "tag": {
+      "label": "enum:Exclusivo on-line"
+    },
+    "offer": {
+      "label": "enum:Oferta",
+      "type": "enum:offer",
+      "value": "integer:10;22"
+    },
+    "url": "enum:teste"
+  }]
+}

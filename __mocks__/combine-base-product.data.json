@@ -1,0 +1,10 @@
+[
+  {
+    "products":
+    [
+      {
+        "id":5,
+        "name":"Furadeira de Impacto 1/2 1010W Hp2070 220V Makita","price":{"to":{"integers":978,"decimals":97}},"unit":"cada","installments":{"amount":6,"price":{"integers":113,"decimals":95}}}
+    ]
+  }
+]

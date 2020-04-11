@@ -64,7 +64,7 @@ class Cart extends React.Component {
   calculateSubtotal () {
     const { items } = this.props.cart
     if (items.length > 0) {
-      return items.map(item => item.amount * parseFloat(`${item.product.price.to.integers.replace(/[^\d]+/g, '')}.${item.product.price.to.decimals}`))
+      return items.map(item => item.amount * parseFloat(`${(''+item.product.price.to.integers).replace(/[^\d]+/g, '')}.${item.product.price.to.decimals}`))
         .reduce((acc, value) => acc + value)
     }
     return 0.00
@@ -96,6 +96,7 @@ class Cart extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     const { toggleCart, cart } = this.props
     const cartItems = this.extractProductList()
     const subtotal = this.calculateSubtotal()

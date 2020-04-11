@@ -30,7 +30,7 @@ export const setErrorRequest = (error) => {
 export const setProducts = () => {
   return (dispatch) => {
     dispatch(setIsFetching())
-    const url = 'https://us-central1-boitata-233919.cloudfunctions.net/api/products'
+    const url = 'http://localhost:3000/products'
     return axios.get(url).then((response) => {
       dispatch({
         type: types.RELOAD_PRODUCTS,
