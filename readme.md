@@ -1,6 +1,6 @@
 ### Virtual Store
 
-Catálogo de produtos com carrinho de compras, desenvolvido com React e Redux
+Catálogo de produtos e carrinho de compras, desenvolvido com React e Redux
 
 <img src="virtual-store-page.png" />
 
