@@ -8,7 +8,7 @@ const Header = ({ CartIcon }) => {
     <div className='header'>
       <div className='header__container'>
         <div className="header__logo">
-          <img src={logo} width={70} height={70} />
+          <img src={logo} />
         </div>
         <div className="header__mobile-title">
           <span>Os melhores produtos</span>

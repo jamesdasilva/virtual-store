@@ -96,7 +96,6 @@ class Cart extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     const { toggleCart, cart } = this.props
     const cartItems = this.extractProductList()
     const subtotal = this.calculateSubtotal()
